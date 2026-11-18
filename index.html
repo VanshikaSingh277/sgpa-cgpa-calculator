@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AKTU SGPA & CGPA Calculator</title>
+<meta name="description" content="Free AKTU SGPA, CGPA and percentage calculator for students.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>🎓 AKTU SGPA & CGPA Calculator</h1>
+  <p>Add your subjects, pick grades, and get SGPA, CGPA and percentage instantly.</p>
+</header>
+
+<main>
+  <div class="tabs">
+    <button class="tab active" data-mode="detailed">Subject-wise</button>
+    <button class="tab" data-mode="quick">Quick CGPA (from SGPAs)</button>
+  </div>
+
+  <!-- Detailed mode -->
+  <section id="detailed">
+    <div id="semesters"></div>
+    <div class="row-btns">
+      <button id="addSem" class="btn">+ Add Semester</button>
+      <button id="reset" class="btn ghost">Reset all</button>
+    </div>
+  </section>
+
+  <!-- Quick mode -->
+  <section id="quick" hidden>
+    <p class="hint">Enter each semester's SGPA and total credits.</p>
+    <table class="quick-table">
+      <thead><tr><th>Sem</th><th>SGPA</th><th>Credits</th><th></th></tr></thead>
+      <tbody id="quickRows"></tbody>
+    </table>
+    <button id="addQuick" class="btn">+ Add Semester</button>
+  </section>
+
+  <section class="result">
+    <div class="stat"><span>CGPA</span><strong id="cgpa">0.00</strong></div>
+    <div class="stat"><span>Percentage</span><strong id="percent">0.00%</strong></div>
+    <div class="stat"><span>Total Credits</span><strong id="credits">0</strong></div>
+  </section>
+  <p class="formula">Percentage = (CGPA × 10) − 7.5 (AKTU formula)</p>
+
+  <details class="scale">
+    <summary>Grade scale (tap to view / edit)</summary>
+    <table>
+      <thead><tr><th>Grade</th><th>Marks</th><th>Points</th></tr></thead>
+      <tbody id="scaleRows"></tbody>
+    </table>
+    <p class="hint">Check this against your latest AKTU ordinance and edit the points if needed.</p>
+  </details>
+</main>
+
+<footer>Made by Vanshika · Results are estimates, always confirm with the official AKTU result.</footer>
+<script src="script.js"></script>
+</body>
+</html>
