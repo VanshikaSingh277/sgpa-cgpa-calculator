@@ -1,0 +1,86 @@
+{
+  "university": "rtu",
+  "course": "btech",
+  "branch": "cse",
+  "scheme": "2018",
+  "semester": 5,
+  "verified": false,
+  "source": "rtu_btech_cse_scheme_2018-onwards_skit.pdf (https://www.skit.ac.in/images/cs-files/BTech_CS_2018_onwards.pdf)",
+  "sourceSession": "2018-19 onwards",
+  "lastUpdated": "2026-11-18",
+  "note": "Taken from RTU's scheme as published by SKIT Jaipur (an RTU-affiliated college), not from rtu.ac.in, and it is the scheme for students admitted from 2018-19. Check it against your current RTU scheme.",
+  "subjects": [
+    {
+      "code": "5CS3-01",
+      "name": "Information Theory & Coding",
+      "type": "theory",
+      "credits": 2
+    },
+    {
+      "code": "5CS4-02",
+      "name": "Compiler Design",
+      "type": "theory",
+      "credits": 3
+    },
+    {
+      "code": "5CS4-03",
+      "name": "Operating System",
+      "type": "theory",
+      "credits": 3
+    },
+    {
+      "code": "5CS4-04",
+      "name": "Computer Graphics & Multimedia",
+      "type": "theory",
+      "credits": 3
+    },
+    {
+      "code": "5CS4-05",
+      "name": "Analysis of Algorithms",
+      "type": "theory",
+      "credits": 3
+    },
+    {
+      "code": "5CS5-11…13",
+      "name": "Professional Elective 1 (Wireless Communication / Human-Computer Interaction / Bioinformatics)",
+      "type": "theory",
+      "credits": 2
+    },
+    {
+      "code": "5CS4-21",
+      "name": "Computer Graphics & Multimedia Lab",
+      "type": "lab",
+      "credits": 1
+    },
+    {
+      "code": "5CS4-22",
+      "name": "Compiler Design Lab",
+      "type": "lab",
+      "credits": 1
+    },
+    {
+      "code": "5CS4-23",
+      "name": "Analysis of Algorithms Lab",
+      "type": "lab",
+      "credits": 1
+    },
+    {
+      "code": "5CS4-24",
+      "name": "Advance Java Lab",
+      "type": "lab",
+      "credits": 1
+    },
+    {
+      "code": "5CS7-30",
+      "name": "Industrial Training",
+      "type": "project",
+      "credits": 2.5
+    },
+    {
+      "code": "5CS8-00",
+      "name": "Social Outreach, Discipline & Extra Curricular Activities (SODECA)",
+      "type": "lab",
+      "credits": 0.5
+    }
+  ]
+}

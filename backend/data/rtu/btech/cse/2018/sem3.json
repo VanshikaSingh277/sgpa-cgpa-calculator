@@ -1,0 +1,86 @@
+{
+  "university": "rtu",
+  "course": "btech",
+  "branch": "cse",
+  "scheme": "2018",
+  "semester": 3,
+  "verified": false,
+  "source": "rtu_btech_cse_scheme_2018-onwards_skit.pdf (https://www.skit.ac.in/images/cs-files/BTech_CS_2018_onwards.pdf)",
+  "sourceSession": "2018-19 onwards",
+  "lastUpdated": "2026-11-18",
+  "note": "Taken from RTU's scheme as published by SKIT Jaipur (an RTU-affiliated college), not from rtu.ac.in, and it is the scheme for students admitted from 2018-19. Check it against your current RTU scheme.",
+  "subjects": [
+    {
+      "code": "3CS2-01",
+      "name": "Advanced Engineering Mathematics",
+      "type": "theory",
+      "credits": 3
+    },
+    {
+      "code": "3CS1-02 / 3CS1-03",
+      "name": "Technical Communication / Managerial Economics and Financial Accounting",
+      "type": "theory",
+      "credits": 2
+    },
+    {
+      "code": "3CS3-04",
+      "name": "Digital Electronics",
+      "type": "theory",
+      "credits": 3
+    },
+    {
+      "code": "3CS4-05",
+      "name": "Data Structures and Algorithms",
+      "type": "theory",
+      "credits": 3
+    },
+    {
+      "code": "3CS4-06",
+      "name": "Object Oriented Programming",
+      "type": "theory",
+      "credits": 3
+    },
+    {
+      "code": "3CS4-07",
+      "name": "Software Engineering",
+      "type": "theory",
+      "credits": 3
+    },
+    {
+      "code": "3CS4-21",
+      "name": "Data Structures and Algorithms Lab",
+      "type": "lab",
+      "credits": 1.5
+    },
+    {
+      "code": "3CS4-22",
+      "name": "Object Oriented Programming Lab",
+      "type": "lab",
+      "credits": 1.5
+    },
+    {
+      "code": "3CS4-23",
+      "name": "Software Engineering Lab",
+      "type": "lab",
+      "credits": 1.5
+    },
+    {
+      "code": "3CS4-24",
+      "name": "Digital Electronics Lab",
+      "type": "lab",
+      "credits": 1.5
+    },
+    {
+      "code": "3CS7-30",
+      "name": "Industrial Training",
+      "type": "project",
+      "credits": 1
+    },
+    {
+      "code": "3CS8-00",
+      "name": "Social Outreach, Discipline & Extra Curricular Activities (SODECA)",
+      "type": "lab",
+      "credits": 0.5
+    }
+  ]
+}

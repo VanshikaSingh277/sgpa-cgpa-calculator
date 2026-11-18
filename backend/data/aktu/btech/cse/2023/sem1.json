@@ -1,0 +1,68 @@
+{
+  "university": "aktu",
+  "course": "btech",
+  "branch": "cse",
+  "scheme": "2023",
+  "semester": 1,
+  "verified": true,
+  "source": "aktu_btech_1st_year_scheme_2022-23.pdf (https://aktu.ac.in/pdf/syllabus/syllabus2223/BTech_First_Yr_Common_other_than_AG_&_BT_Evaluation_Scheme_wef_2022_23.pdf)",
+  "sourceSession": "2022-23",
+  "lastUpdated": "2026-11-18",
+  "note": "Where AKTU lets students take one of two subjects (e.g. Physics / Chemistry group) both are listed in one row — they carry the same credits.",
+  "subjects": [
+    {
+      "code": "BAS101 / BAS102",
+      "name": "Engineering Physics / Engineering Chemistry",
+      "type": "theory",
+      "credits": 4
+    },
+    {
+      "code": "BAS103",
+      "name": "Engineering Mathematics-I",
+      "type": "theory",
+      "credits": 4
+    },
+    {
+      "code": "BEE101 / BEC101",
+      "name": "Fundamentals of Electrical Engineering / Fundamentals of Electronics Engineering",
+      "type": "theory",
+      "credits": 3
+    },
+    {
+      "code": "BCS101 / BME101",
+      "name": "Programming for Problem Solving / Fundamentals of Mechanical Engineering",
+      "type": "theory",
+      "credits": 3
+    },
+    {
+      "code": "BAS104 / BAS105",
+      "name": "Environment and Ecology / Soft Skill",
+      "type": "theory",
+      "credits": 3
+    },
+    {
+      "code": "BAS151 / BAS152",
+      "name": "Engineering Physics Lab / Engineering Chemistry Lab",
+      "type": "lab",
+      "credits": 1
+    },
+    {
+      "code": "BEE151 / BEC151",
+      "name": "Basic Electrical Engineering Lab / Basic Electronics Engineering Lab",
+      "type": "lab",
+      "credits": 1
+    },
+    {
+      "code": "BCS151 / BAS155",
+      "name": "Programming for Problem Solving Lab / English Language Lab",
+      "type": "lab",
+      "credits": 1
+    },
+    {
+      "code": "BCE151 / BWS151",
+      "name": "Engineering Graphics & Design Lab / Workshop Practice Lab",
+      "type": "lab",
+      "credits": 2
+    }
+  ]
+}

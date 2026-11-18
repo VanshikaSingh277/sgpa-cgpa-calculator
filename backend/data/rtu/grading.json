@@ -1,0 +1,111 @@
+{
+  "university": "rtu",
+  "verified": false,
+  "note": "Grade points match RTU calculators in common use, but no official RTU ordinance was found to confirm them or the percentage formula. Check against the current RTU B.Tech ordinance.",
+  "source": "Not from an official RTU document (unverified)",
+  "lastUpdated": "2026-11-18",
+  "scale": 10,
+  "grades": [
+    {
+      "grade": "A++",
+      "marks": "90–100",
+      "minMarks": 90,
+      "maxMarks": 100,
+      "points": 10,
+      "remark": "Outstanding"
+    },
+    {
+      "grade": "A+",
+      "marks": "80–89",
+      "minMarks": 80,
+      "maxMarks": 89,
+      "points": 9,
+      "remark": "Excellent"
+    },
+    {
+      "grade": "A",
+      "marks": "75–79",
+      "minMarks": 75,
+      "maxMarks": 79,
+      "points": 8.5,
+      "remark": "Very Good"
+    },
+    {
+      "grade": "B+",
+      "marks": "70–74",
+      "minMarks": 70,
+      "maxMarks": 74,
+      "points": 8,
+      "remark": "Good"
+    },
+    {
+      "grade": "B",
+      "marks": "65–69",
+      "minMarks": 65,
+      "maxMarks": 69,
+      "points": 7.5,
+      "remark": "Above Average"
+    },
+    {
+      "grade": "C+",
+      "marks": "60–64",
+      "minMarks": 60,
+      "maxMarks": 64,
+      "points": 7,
+      "remark": "Average"
+    },
+    {
+      "grade": "C",
+      "marks": "55–59",
+      "minMarks": 55,
+      "maxMarks": 59,
+      "points": 6.5,
+      "remark": "Satisfactory"
+    },
+    {
+      "grade": "D+",
+      "marks": "50–54",
+      "minMarks": 50,
+      "maxMarks": 54,
+      "points": 6,
+      "remark": "Fair"
+    },
+    {
+      "grade": "D",
+      "marks": "45–49",
+      "minMarks": 45,
+      "maxMarks": 49,
+      "points": 5.5,
+      "remark": "Pass"
+    },
+    {
+      "grade": "E+",
+      "marks": "40–44",
+      "minMarks": 40,
+      "maxMarks": 44,
+      "points": 5,
+      "remark": "Pass"
+    },
+    {
+      "grade": "E",
+      "marks": "35–39",
+      "minMarks": 35,
+      "maxMarks": 39,
+      "points": 4,
+      "remark": "Pass"
+    },
+    {
+      "grade": "F",
+      "marks": "< 35",
+      "minMarks": 0,
+      "maxMarks": 34,
+      "points": 0,
+      "remark": "Fail"
+    }
+  ],
+  "percentage": {
+    "formula": "CGPA × 10",
+    "multiply": 10,
+    "subtract": 0
+  }
+}

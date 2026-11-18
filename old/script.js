@@ -19,9 +19,11 @@ const syllabusFor = no => getSyllabus(state.uni, state.branch, no);
 
 // Build a semester from the syllabus if we have it, otherwise blank rows.
 // Grades start empty, so a subject only counts once the student picks a grade.
-function newSem(no) {
-  const syl = syllabusFor(no);
-  if (syl) return { fromSyllabus: true, subjects: syl.map(([name, credits]) => ({ name, credits, grade: "" })) };
+function newSem(no, group) {
+  const groups = getSyllabusGroups(state.uni, state.branch, no);
+  if (groups.length && !groups.includes(group)) group = groups[0];
+  const syl = getSyllabus(state.uni, state.branch, no, group);
+  if (syl) return { fromSyllabus: true, group: group || null, subjects: syl.map(([name, credits]) => ({ name, credits, grade: "" })) };
   return { fromSyllabus: false, subjects: [blankSubject(), blankSubject(), blankSubject()] };
 }
 function currentSem() {
@@ -172,6 +174,8 @@ function renderSems() {
   const sem = currentSem();
   const n = state.sem;
   const hasSyl = !!syllabusFor(n);
+  const groups = getSyllabusGroups(state.uni, state.branch, n);
+  const note = getUniversity(state.uni).syllabusNote;
   renderSemTabs();
   $("semesters").innerHTML = `
     <div class="sem">
@@ -182,6 +186,10 @@ function renderSems() {
         </div>
         <span class="sgpa" data-sgpa>SGPA: <span id="cardSgpa"></span></span>
       </div>
+      ${groups.length ? `<label class="group-pick">Your group:
+        <select id="groupPick">${groups.map(g => `<option ${g === sem.group ? "selected" : ""}>${esc(g)}</option>`).join("")}</select>
+      </label>` : ""}
+      ${sem.fromSyllabus && note ? `<p class="hint source">ℹ️ ${esc(note)} Check against your own scheme.</p>` : ""}
       <div class="subj subj-head"><span>Subject</span><span>Credits</span><span>Grade</span><span></span></div>
       ${sem.subjects.map((s, j) => `
         <div class="subj">
@@ -234,6 +242,10 @@ document.addEventListener("input", e => {
     currentSem().subjects[d.j][d.f] = e.target.value;
     recalc();
     $("cardSgpa").textContent = semTotals(currentSem()).sgpa.toFixed(2);
+  } else if (e.target.id === "groupPick") {
+    const sem = currentSem(), g = e.target.value;
+    if (sem.subjects.some(s => s.grade) && !confirm(`Load ${g} subjects? Grades in Semester ${state.sem} will be cleared.`)) { e.target.value = sem.group; return; }
+    state.sems[state.sem] = newSem(state.sem, g); renderSems();
   } else if (d.q !== undefined) { state.quick[d.q][d.f] = e.target.value; recalc(); }
   else if (d.scale !== undefined) {
     state.scale[d.scale].p = parseFloat(e.target.value) || 0;
@@ -256,7 +268,7 @@ document.addEventListener("click", e => {
   else if (d.addsub !== undefined) { currentSem().subjects.push(blankSubject()); renderSems(); }
   else if (d.loadsyl !== undefined) {
     if (confirm(`Replace Semester ${state.sem} subjects with the syllabus? Grades in this semester will be cleared.`)) {
-      state.sems[state.sem] = newSem(state.sem); renderSems();
+      state.sems[state.sem] = newSem(state.sem, currentSem().group); renderSems();
     }
   }
   else if (d.clearsem !== undefined) { currentSem().subjects.forEach(s => s.grade = ""); renderSems(); }

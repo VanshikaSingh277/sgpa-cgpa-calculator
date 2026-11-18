@@ -1,0 +1,86 @@
+{
+  "university": "rtu",
+  "course": "btech",
+  "branch": "cse",
+  "scheme": "2018",
+  "semester": 4,
+  "verified": false,
+  "source": "rtu_btech_cse_scheme_2018-onwards_skit.pdf (https://www.skit.ac.in/images/cs-files/BTech_CS_2018_onwards.pdf)",
+  "sourceSession": "2018-19 onwards",
+  "lastUpdated": "2026-11-18",
+  "note": "Taken from RTU's scheme as published by SKIT Jaipur (an RTU-affiliated college), not from rtu.ac.in, and it is the scheme for students admitted from 2018-19. Check it against your current RTU scheme.",
+  "subjects": [
+    {
+      "code": "4CS2-01",
+      "name": "Discrete Mathematics Structure",
+      "type": "theory",
+      "credits": 3
+    },
+    {
+      "code": "4CS1-03 / 4CS1-02",
+      "name": "Managerial Economics and Financial Accounting / Technical Communication",
+      "type": "theory",
+      "credits": 2
+    },
+    {
+      "code": "4CS3-04",
+      "name": "Microprocessor & Interfaces",
+      "type": "theory",
+      "credits": 3
+    },
+    {
+      "code": "4CS4-05",
+      "name": "Database Management System",
+      "type": "theory",
+      "credits": 3
+    },
+    {
+      "code": "4CS4-06",
+      "name": "Theory of Computation",
+      "type": "theory",
+      "credits": 3
+    },
+    {
+      "code": "4CS4-07",
+      "name": "Data Communication and Computer Networks",
+      "type": "theory",
+      "credits": 3
+    },
+    {
+      "code": "4CS4-21",
+      "name": "Microprocessor & Interfaces Lab",
+      "type": "lab",
+      "credits": 1
+    },
+    {
+      "code": "4CS4-22",
+      "name": "Database Management System Lab",
+      "type": "lab",
+      "credits": 1.5
+    },
+    {
+      "code": "4CS4-23",
+      "name": "Network Programming Lab",
+      "type": "lab",
+      "credits": 1.5
+    },
+    {
+      "code": "4CS4-24",
+      "name": "Linux Shell Programming Lab",
+      "type": "lab",
+      "credits": 1
+    },
+    {
+      "code": "4CS4-25",
+      "name": "Java Lab",
+      "type": "lab",
+      "credits": 1
+    },
+    {
+      "code": "4CS8-00",
+      "name": "Social Outreach, Discipline & Extra Curricular Activities (SODECA)",
+      "type": "lab",
+      "credits": 0.5
+    }
+  ]
+}

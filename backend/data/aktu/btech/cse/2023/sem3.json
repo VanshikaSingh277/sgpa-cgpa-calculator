@@ -1,0 +1,74 @@
+{
+  "university": "aktu",
+  "course": "btech",
+  "branch": "cse",
+  "scheme": "2023",
+  "semester": 3,
+  "verified": true,
+  "source": "aktu_btech_cse_2nd_year_2023-24_v3.pdf (https://fms.aktu.ac.in/Resources/aktu/pdf/syllabus/Syllabus2324/B.Tech_2nd_Yr_CSE_v3.pdf)",
+  "sourceSession": "2023-24",
+  "lastUpdated": "2026-11-18",
+  "note": "Where AKTU lets students take one of two subjects (e.g. Physics / Chemistry group) both are listed in one row — they carry the same credits.",
+  "subjects": [
+    {
+      "code": "BOE3** / BAS303",
+      "name": "Science Based Open Elective / Mathematics-IV",
+      "type": "theory",
+      "credits": 4
+    },
+    {
+      "code": "BVE301 / BAS301",
+      "name": "Universal Human Value and Professional Ethics / Technical Communication",
+      "type": "theory",
+      "credits": 3
+    },
+    {
+      "code": "BCS301",
+      "name": "Data Structure",
+      "type": "theory",
+      "credits": 4
+    },
+    {
+      "code": "BCS302",
+      "name": "Computer Organization and Architecture",
+      "type": "theory",
+      "credits": 4
+    },
+    {
+      "code": "BCS303",
+      "name": "Discrete Structures & Theory of Logic",
+      "type": "theory",
+      "credits": 3
+    },
+    {
+      "code": "BCS351",
+      "name": "Data Structure Lab",
+      "type": "lab",
+      "credits": 1
+    },
+    {
+      "code": "BCS352",
+      "name": "Computer Organization and Architecture Lab",
+      "type": "lab",
+      "credits": 1
+    },
+    {
+      "code": "BCS353",
+      "name": "Web Designing Workshop",
+      "type": "lab",
+      "credits": 1
+    },
+    {
+      "code": "BCC301 / BCC302",
+      "name": "Cyber Security / Python Programming",
+      "type": "theory",
+      "credits": 2
+    },
+    {
+      "code": "BCC351",
+      "name": "Internship Assessment / Mini Project",
+      "type": "project",
+      "credits": 2
+    }
+  ]
+}

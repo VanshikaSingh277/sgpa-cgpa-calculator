@@ -1,0 +1,74 @@
+{
+  "university": "aktu",
+  "course": "btech",
+  "branch": "cse",
+  "scheme": "2023",
+  "semester": 2,
+  "verified": true,
+  "source": "aktu_btech_1st_year_scheme_2022-23.pdf (https://aktu.ac.in/pdf/syllabus/syllabus2223/BTech_First_Yr_Common_other_than_AG_&_BT_Evaluation_Scheme_wef_2022_23.pdf)",
+  "sourceSession": "2022-23",
+  "lastUpdated": "2026-11-18",
+  "note": "Where AKTU lets students take one of two subjects (e.g. Physics / Chemistry group) both are listed in one row — they carry the same credits.",
+  "subjects": [
+    {
+      "code": "BAS202 / BAS201",
+      "name": "Engineering Chemistry / Engineering Physics",
+      "type": "theory",
+      "credits": 4
+    },
+    {
+      "code": "BAS203",
+      "name": "Engineering Mathematics-II",
+      "type": "theory",
+      "credits": 4
+    },
+    {
+      "code": "BEC201 / BEE201",
+      "name": "Fundamentals of Electronics Engineering / Fundamentals of Electrical Engineering",
+      "type": "theory",
+      "credits": 3
+    },
+    {
+      "code": "BME201 / BCS201",
+      "name": "Fundamentals of Mechanical Engineering / Programming for Problem Solving",
+      "type": "theory",
+      "credits": 3
+    },
+    {
+      "code": "BAS205 / BAS204",
+      "name": "Soft Skill / Environment and Ecology",
+      "type": "theory",
+      "credits": 3
+    },
+    {
+      "code": "BAS252 / BAS251",
+      "name": "Engineering Chemistry Lab / Engineering Physics Lab",
+      "type": "lab",
+      "credits": 1
+    },
+    {
+      "code": "BEC251 / BEE251",
+      "name": "Basic Electronics Engineering Lab / Basic Electrical Engineering Lab",
+      "type": "lab",
+      "credits": 1
+    },
+    {
+      "code": "BAS255 / BCS251",
+      "name": "English Language Lab / Programming for Problem Solving Lab",
+      "type": "lab",
+      "credits": 1
+    },
+    {
+      "code": "BWS251 / BCE251",
+      "name": "Workshop Practice Lab / Engineering Graphics & Design Lab",
+      "type": "lab",
+      "credits": 2
+    },
+    {
+      "code": "BVA251 / BVA252",
+      "name": "Sports and Yoga / NSS (compulsory qualifying audit course)",
+      "type": "audit",
+      "credits": 0
+    }
+  ]
+}

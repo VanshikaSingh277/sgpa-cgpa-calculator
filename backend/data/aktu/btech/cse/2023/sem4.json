@@ -1,0 +1,74 @@
+{
+  "university": "aktu",
+  "course": "btech",
+  "branch": "cse",
+  "scheme": "2023",
+  "semester": 4,
+  "verified": true,
+  "source": "aktu_btech_cse_2nd_year_2023-24_v3.pdf (https://fms.aktu.ac.in/Resources/aktu/pdf/syllabus/Syllabus2324/B.Tech_2nd_Yr_CSE_v3.pdf)",
+  "sourceSession": "2023-24",
+  "lastUpdated": "2026-11-18",
+  "note": "Where AKTU lets students take one of two subjects (e.g. Physics / Chemistry group) both are listed in one row — they carry the same credits.",
+  "subjects": [
+    {
+      "code": "BAS403 / BOE4**",
+      "name": "Mathematics-IV / Science Based Open Elective",
+      "type": "theory",
+      "credits": 4
+    },
+    {
+      "code": "BAS401 / BVE401",
+      "name": "Technical Communication / Universal Human Value and Professional Ethics",
+      "type": "theory",
+      "credits": 3
+    },
+    {
+      "code": "BCS401",
+      "name": "Operating System",
+      "type": "theory",
+      "credits": 4
+    },
+    {
+      "code": "BCS402",
+      "name": "Theory of Automata and Formal Languages",
+      "type": "theory",
+      "credits": 4
+    },
+    {
+      "code": "BCS403",
+      "name": "Object Oriented Programming with Java",
+      "type": "theory",
+      "credits": 3
+    },
+    {
+      "code": "BCS451",
+      "name": "Operating System Lab",
+      "type": "lab",
+      "credits": 1
+    },
+    {
+      "code": "BCS452",
+      "name": "Object Oriented Programming with Java Lab",
+      "type": "lab",
+      "credits": 1
+    },
+    {
+      "code": "BCS453",
+      "name": "Cyber Security Workshop",
+      "type": "lab",
+      "credits": 1
+    },
+    {
+      "code": "BCC402 / BCC401",
+      "name": "Python Programming / Cyber Security",
+      "type": "theory",
+      "credits": 2
+    },
+    {
+      "code": "BVE451 / BVE452",
+      "name": "Sports and Yoga - II / NSS-II",
+      "type": "audit",
+      "credits": 0
+    }
+  ]
+}

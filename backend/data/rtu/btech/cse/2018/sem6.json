@@ -1,0 +1,86 @@
+{
+  "university": "rtu",
+  "course": "btech",
+  "branch": "cse",
+  "scheme": "2018",
+  "semester": 6,
+  "verified": false,
+  "source": "rtu_btech_cse_scheme_2018-onwards_skit.pdf (https://www.skit.ac.in/images/cs-files/BTech_CS_2018_onwards.pdf)",
+  "sourceSession": "2018-19 onwards",
+  "lastUpdated": "2026-11-18",
+  "note": "Taken from RTU's scheme as published by SKIT Jaipur (an RTU-affiliated college), not from rtu.ac.in, and it is the scheme for students admitted from 2018-19. Check it against your current RTU scheme.",
+  "subjects": [
+    {
+      "code": "6CS3-01",
+      "name": "Digital Image Processing",
+      "type": "theory",
+      "credits": 2
+    },
+    {
+      "code": "6CS4-02",
+      "name": "Machine Learning",
+      "type": "theory",
+      "credits": 3
+    },
+    {
+      "code": "6CS4-03",
+      "name": "Information Security System",
+      "type": "theory",
+      "credits": 2
+    },
+    {
+      "code": "6CS4-04",
+      "name": "Computer Architecture and Organization",
+      "type": "theory",
+      "credits": 3
+    },
+    {
+      "code": "6CS4-05",
+      "name": "Artificial Intelligence",
+      "type": "theory",
+      "credits": 2
+    },
+    {
+      "code": "6CS4-06",
+      "name": "Cloud Computing",
+      "type": "theory",
+      "credits": 3
+    },
+    {
+      "code": "6CS5-11…13",
+      "name": "Professional Elective (Distributed System / Software Defined Network / Ecommerce and ERP)",
+      "type": "theory",
+      "credits": 2
+    },
+    {
+      "code": "6CS4-21",
+      "name": "Digital Image Processing Lab",
+      "type": "lab",
+      "credits": 1.5
+    },
+    {
+      "code": "6CS4-22",
+      "name": "Machine Learning Lab",
+      "type": "lab",
+      "credits": 1.5
+    },
+    {
+      "code": "6CS4-23",
+      "name": "Python Lab",
+      "type": "lab",
+      "credits": 1.5
+    },
+    {
+      "code": "6CS4-24",
+      "name": "Mobile Application Development Lab",
+      "type": "lab",
+      "credits": 1.5
+    },
+    {
+      "code": "6CS8-00",
+      "name": "Social Outreach, Discipline & Extra Curricular Activities (SODECA)",
+      "type": "lab",
+      "credits": 0.5
+    }
+  ]
+}

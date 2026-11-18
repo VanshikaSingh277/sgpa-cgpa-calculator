@@ -1,0 +1,56 @@
+{
+  "university": "aktu",
+  "course": "btech",
+  "branch": "cse",
+  "scheme": "2023",
+  "semester": 7,
+  "verified": true,
+  "source": "aktu_btech_cse_4th_year_2025-26.pdf (https://fms.aktu.ac.in/Resources/aktu/pdf/syllabus/Syllabus2526/B.Tech. CS_CE and CSE Syllabus  4th Year 2025-26.pdf)",
+  "sourceSession": "2025-26",
+  "lastUpdated": "2026-11-18",
+  "note": "Where AKTU lets students take one of two subjects (e.g. Physics / Chemistry group) both are listed in one row — they carry the same credits.",
+  "subjects": [
+    {
+      "code": "BCS701",
+      "name": "Artificial Intelligence",
+      "type": "theory",
+      "credits": 3
+    },
+    {
+      "code": "BCS070…073",
+      "name": "Departmental Elective-IV (Internet of Things / Cloud Computing / Cryptography and Network Security / Design & Development of Applications)",
+      "type": "theory",
+      "credits": 3
+    },
+    {
+      "code": "BOEM** (OE-II)",
+      "name": "Open Elective-II",
+      "type": "theory",
+      "credits": 3
+    },
+    {
+      "code": "BCS751",
+      "name": "Artificial Intelligence Lab",
+      "type": "lab",
+      "credits": 1
+    },
+    {
+      "code": "BCS752",
+      "name": "Mini Project or Internship Assessment",
+      "type": "project",
+      "credits": 2
+    },
+    {
+      "code": "BCS753",
+      "name": "Project-I",
+      "type": "project",
+      "credits": 5
+    },
+    {
+      "code": "BCS754",
+      "name": "Startup and Entrepreneurial Activity Assessment",
+      "type": "project",
+      "credits": 2
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "university": "aktu",
+  "course": "btech",
+  "branch": "cse",
+  "scheme": "2023",
+  "semester": 6,
+  "verified": true,
+  "source": "aktu_btech_cse_3rd_year_2024-25.pdf (https://fms.aktu.ac.in/Resources/aktu/pdf/syllabus/Syllabus2425/B.Tech. CST_CS_CE and CSE Syllabus 3rd Year 2024-25_15072026.pdf)",
+  "sourceSession": "2024-25",
+  "lastUpdated": "2026-11-18",
+  "note": "Where AKTU lets students take one of two subjects (e.g. Physics / Chemistry group) both are listed in one row — they carry the same credits.",
+  "subjects": [
+    {
+      "code": "BCS601",
+      "name": "Software Engineering",
+      "type": "theory",
+      "credits": 4
+    },
+    {
+      "code": "BCS602",
+      "name": "Compiler Design",
+      "type": "theory",
+      "credits": 4
+    },
+    {
+      "code": "BCS603",
+      "name": "Computer Networks",
+      "type": "theory",
+      "credits": 4
+    },
+    {
+      "code": "BCS-061…064",
+      "name": "Departmental Elective-III (Big Data / Augmented & Virtual Reality / Blockchain Architecture Design / Data Compression)",
+      "type": "theory",
+      "credits": 3
+    },
+    {
+      "code": "OE-I",
+      "name": "Open Elective-I",
+      "type": "theory",
+      "credits": 3
+    },
+    {
+      "code": "BCS651",
+      "name": "Software Engineering Lab",
+      "type": "lab",
+      "credits": 1
+    },
+    {
+      "code": "BCS652",
+      "name": "Compiler Design Lab",
+      "type": "lab",
+      "credits": 1
+    },
+    {
+      "code": "BCS653",
+      "name": "Computer Networks Lab",
+      "type": "lab",
+      "credits": 1
+    },
+    {
+      "code": "BNC601 / BNC602",
+      "name": "Constitution of India / Essence of Indian Traditional Knowledge",
+      "type": "audit",
+      "credits": 0
+    }
+  ]
+}

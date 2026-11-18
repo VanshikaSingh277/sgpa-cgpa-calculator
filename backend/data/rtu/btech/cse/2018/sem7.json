@@ -1,0 +1,56 @@
+{
+  "university": "rtu",
+  "course": "btech",
+  "branch": "cse",
+  "scheme": "2018",
+  "semester": 7,
+  "verified": false,
+  "source": "rtu_btech_cse_scheme_2018-onwards_skit.pdf (https://www.skit.ac.in/images/cs-files/BTech_CS_2018_onwards.pdf)",
+  "sourceSession": "2018-19 onwards",
+  "lastUpdated": "2026-11-18",
+  "note": "Taken from RTU's scheme as published by SKIT Jaipur (an RTU-affiliated college), not from rtu.ac.in, and it is the scheme for students admitted from 2018-19. Check it against your current RTU scheme.",
+  "subjects": [
+    {
+      "code": "7CS4-01",
+      "name": "Internet of Things",
+      "type": "theory",
+      "credits": 3
+    },
+    {
+      "code": "OE-I",
+      "name": "Open Elective - I",
+      "type": "theory",
+      "credits": 3
+    },
+    {
+      "code": "7CS4-21",
+      "name": "Internet of Things Lab",
+      "type": "lab",
+      "credits": 2
+    },
+    {
+      "code": "7CS4-22",
+      "name": "Cyber Security Lab",
+      "type": "lab",
+      "credits": 2
+    },
+    {
+      "code": "7CS7-30",
+      "name": "Industrial Training",
+      "type": "project",
+      "credits": 2.5
+    },
+    {
+      "code": "7CS7-40",
+      "name": "Seminar",
+      "type": "project",
+      "credits": 2
+    },
+    {
+      "code": "7CS8-00",
+      "name": "Social Outreach, Discipline & Extra Curricular Activities (SODECA)",
+      "type": "lab",
+      "credits": 0.5
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "university": "aktu",
+  "verified": false,
+  "note": "Grade points and percentage formula as provided by the site owner. Confirm against the latest AKTU ordinance before relying on them.",
+  "source": "Site owner specification (not yet checked against the AKTU ordinance)",
+  "lastUpdated": "2026-11-18",
+  "scale": 10,
+  "grades": [
+    {
+      "grade": "A+",
+      "marks": "90–100",
+      "minMarks": 90,
+      "maxMarks": 100,
+      "points": 10,
+      "remark": "Outstanding"
+    },
+    {
+      "grade": "A",
+      "marks": "80–89",
+      "minMarks": 80,
+      "maxMarks": 89,
+      "points": 9,
+      "remark": "Excellent"
+    },
+    {
+      "grade": "B+",
+      "marks": "70–79",
+      "minMarks": 70,
+      "maxMarks": 79,
+      "points": 8,
+      "remark": "Very Good"
+    },
+    {
+      "grade": "B",
+      "marks": "65–69",
+      "minMarks": 65,
+      "maxMarks": 69,
+      "points": 7,
+      "remark": "Good"
+    },
+    {
+      "grade": "C+",
+      "marks": "60–64",
+      "minMarks": 60,
+      "maxMarks": 64,
+      "points": 6,
+      "remark": "Above Average"
+    },
+    {
+      "grade": "C",
+      "marks": "50–59",
+      "minMarks": 50,
+      "maxMarks": 59,
+      "points": 5,
+      "remark": "Average"
+    },
+    {
+      "grade": "D",
+      "marks": "40–49",
+      "minMarks": 40,
+      "maxMarks": 49,
+      "points": 4,
+      "remark": "Pass"
+    },
+    {
+      "grade": "E",
+      "marks": "Grace",
+      "minMarks": null,
+      "maxMarks": null,
+      "points": 3,
+      "remark": "Grace pass"
+    },
+    {
+      "grade": "F",
+      "marks": "< 40",
+      "minMarks": 0,
+      "maxMarks": 39,
+      "points": 0,
+      "remark": "Fail"
+    }
+  ],
+  "percentage": {
+    "formula": "(CGPA × 10) − 7.5",
+    "multiply": 10,
+    "subtract": 7.5
+  }
+}

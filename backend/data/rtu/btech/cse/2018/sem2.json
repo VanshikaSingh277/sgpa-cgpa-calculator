@@ -1,0 +1,80 @@
+{
+  "university": "rtu",
+  "course": "btech",
+  "branch": "cse",
+  "scheme": "2018",
+  "semester": 2,
+  "verified": false,
+  "source": "rtu_btech_cse_scheme_2018-onwards_skit.pdf (https://www.skit.ac.in/images/cs-files/BTech_CS_2018_onwards.pdf)",
+  "sourceSession": "2018-19 onwards",
+  "lastUpdated": "2026-11-18",
+  "note": "Taken from RTU's scheme as published by SKIT Jaipur (an RTU-affiliated college), not from rtu.ac.in, and it is the scheme for students admitted from 2018-19. Check it against your current RTU scheme.",
+  "subjects": [
+    {
+      "code": "2FY2-01",
+      "name": "Engineering Mathematics-II",
+      "type": "theory",
+      "credits": 4
+    },
+    {
+      "code": "2FY2-03 / 2FY2-02",
+      "name": "Engineering Chemistry / Engineering Physics",
+      "type": "theory",
+      "credits": 4
+    },
+    {
+      "code": "2FY1-05 / 2FY1-04",
+      "name": "Human Values / Communication Skills",
+      "type": "theory",
+      "credits": 2
+    },
+    {
+      "code": "2FY3-07 / 2FY3-06",
+      "name": "Basic Mechanical Engineering / Programming for Problem Solving",
+      "type": "theory",
+      "credits": 2
+    },
+    {
+      "code": "2FY3-09 / 2FY3-08",
+      "name": "Basic Civil Engineering / Basic Electrical Engineering",
+      "type": "theory",
+      "credits": 2
+    },
+    {
+      "code": "2FY2-21 / 2FY2-20",
+      "name": "Engineering Chemistry Lab / Engineering Physics Lab",
+      "type": "lab",
+      "credits": 1
+    },
+    {
+      "code": "2FY1-23 / 2FY1-22",
+      "name": "Human Values Activities / Language Lab",
+      "type": "lab",
+      "credits": 1
+    },
+    {
+      "code": "2FY3-25 / 2FY3-24",
+      "name": "Manufacturing Practices Workshop / Computer Programming Lab",
+      "type": "lab",
+      "credits": 1.5
+    },
+    {
+      "code": "2FY3-27 / 2FY3-26",
+      "name": "Basic Civil Engineering Lab / Basic Electrical Engineering Lab",
+      "type": "lab",
+      "credits": 1
+    },
+    {
+      "code": "2FY3-29 / 2FY3-28",
+      "name": "Computer Aided Machine Drawing / Computer Aided Engineering Graphics",
+      "type": "lab",
+      "credits": 1.5
+    },
+    {
+      "code": "1FY8-00",
+      "name": "Social Outreach, Discipline & Extra Curricular Activities (SODECA)",
+      "type": "lab",
+      "credits": 0.5
+    }
+  ]
+}

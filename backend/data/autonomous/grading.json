@@ -1,0 +1,79 @@
+{
+  "university": "autonomous",
+  "verified": false,
+  "note": "Generic UGC 10-point scale. Autonomous colleges set their own grade boundaries and percentage rule — check your college's academic regulations.",
+  "source": "UGC 10-point grading scale (generic, not college-specific)",
+  "lastUpdated": "2026-11-18",
+  "scale": 10,
+  "grades": [
+    {
+      "grade": "O",
+      "marks": "90–100",
+      "minMarks": 90,
+      "maxMarks": 100,
+      "points": 10,
+      "remark": "Outstanding"
+    },
+    {
+      "grade": "A+",
+      "marks": "80–89",
+      "minMarks": 80,
+      "maxMarks": 89,
+      "points": 9,
+      "remark": "Excellent"
+    },
+    {
+      "grade": "A",
+      "marks": "70–79",
+      "minMarks": 70,
+      "maxMarks": 79,
+      "points": 8,
+      "remark": "Very Good"
+    },
+    {
+      "grade": "B+",
+      "marks": "60–69",
+      "minMarks": 60,
+      "maxMarks": 69,
+      "points": 7,
+      "remark": "Good"
+    },
+    {
+      "grade": "B",
+      "marks": "50–59",
+      "minMarks": 50,
+      "maxMarks": 59,
+      "points": 6,
+      "remark": "Above Average"
+    },
+    {
+      "grade": "C",
+      "marks": "45–49",
+      "minMarks": 45,
+      "maxMarks": 49,
+      "points": 5,
+      "remark": "Average"
+    },
+    {
+      "grade": "P",
+      "marks": "40–44",
+      "minMarks": 40,
+      "maxMarks": 44,
+      "points": 4,
+      "remark": "Pass"
+    },
+    {
+      "grade": "F",
+      "marks": "< 40",
+      "minMarks": 0,
+      "maxMarks": 39,
+      "points": 0,
+      "remark": "Fail"
+    }
+  ],
+  "percentage": {
+    "formula": "CGPA × 10",
+    "multiply": 10,
+    "subtract": 0
+  }
+}

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About · SGPA & CGPA Calculator</title>
+<meta name="description" content="How SGPA, CGPA and percentage are calculated, frequently asked questions and disclaimer.">
+<link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/style.css">
+<script src="js/config.js"></script>
+<script src="js/common.js"></script>
+</head>
+<body>
+<main id="main">
+  <h1>About this calculator</h1>
+  <p class="muted">How the numbers are worked out, and what to keep in mind.</p>
+
+  <section class="card" aria-labelledby="formulasTitle">
+    <h2 id="formulasTitle">Formulas</h2>
+    <h3>SGPA (one semester)</h3>
+    <p class="formula">SGPA = Σ (credits × grade points) ÷ Σ credits</p>
+    <p>Only subjects that carry credits are counted. Audit / non-credit courses (0 credits, e.g. Sports &amp; Yoga, Constitution of India) are shown but left out.</p>
+    <h3>CGPA (all semesters)</h3>
+    <p class="formula">CGPA = Σ over all semesters (credits × grade points) ÷ Σ all credits</p>
+    <p>CGPA is credit-weighted, so it is <em>not</em> just the average of your SGPAs.</p>
+    <h3>Percentage</h3>
+    <p>Each university has its own conversion. For AKTU:</p>
+    <p class="formula">Percentage = (CGPA × 10) − 7.5</p>
+    <p>The formula for your university is shown in the calculator and on the <a href="grades.html">Grade Table</a> page.</p>
+    <h3>Worked example</h3>
+    <p>Subjects with 4, 3 and 1 credits graded A (9), B+ (8) and A+ (10):</p>
+    <p class="formula">SGPA = (4×9 + 3×8 + 1×10) ÷ (4+3+1) = 70 ÷ 8 = 8.75</p>
+  </section>
+
+  <section class="card" aria-labelledby="faqTitle">
+    <h2 id="faqTitle">FAQ</h2>
+    <details class="faq">
+      <summary>Does an F grade count?</summary>
+      <p>Yes. F is worth 0 grade points, but its credits still count in the total — so it pulls your SGPA down until you clear the subject.</p>
+    </details>
+    <details class="faq">
+      <summary>Why are two subjects shown in one row, e.g. “Engineering Physics / Engineering Chemistry”?</summary>
+      <p>AKTU splits students into groups that take one of two subjects in a semester and the other one next semester. Both options carry the same credits, so pick the grade for the one you took.</p>
+    </details>
+    <details class="faq">
+      <summary>What does the yellow “unverified” warning mean?</summary>
+      <p>That semester's subjects or the grade scale haven't been checked against the official university document yet. The result may not match your marksheet.</p>
+    </details>
+    <details class="faq">
+      <summary>Where is my data stored?</summary>
+      <p>Only in your own browser (localStorage). Nothing about your grades is sent to the server. Use “Reset” to clear it.</p>
+    </details>
+    <details class="faq">
+      <summary>My university or branch isn't listed.</summary>
+      <p>Only universities whose syllabus has been added are available. New ones can be added as JSON files on the backend — see the project README.</p>
+    </details>
+  </section>
+
+  <section class="card" aria-labelledby="disclaimerTitle">
+    <h2 id="disclaimerTitle">Disclaimer</h2>
+    <p>This calculator gives estimates for planning only. Syllabus data is taken from university PDFs and may contain mistakes or be out of date. Always confirm your SGPA, CGPA and percentage with your official university result and the latest ordinance.</p>
+  </section>
+</main>
+</body>
+</html>

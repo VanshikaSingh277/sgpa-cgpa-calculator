@@ -6,6 +6,9 @@
 //                               BRANCH: { semNo: [[subject, credits], ...] } }
 // "common" is used for every branch (e.g. first-year subjects); a branch entry
 // for the same semester overrides it.
+// A semester can also be { "Group name": [...], "Other group": [...] } when
+// students are split into groups (e.g. RTU 1st year); the first one is default.
+// Add  syllabusNote: "..."  to a university to say where its subjects come from.
 //
 // NOTE: Subjects and credits are based on recent B.Tech schemes and can change
 // between batches. Always verify against your official syllabus — every
@@ -21,6 +24,38 @@ const BRANCHES = {
   CE: "Civil (CE)",
 };
 
+// RTU 1st year (common to all branches). Codes start with 1FY in sem 1, 2FY in sem 2.
+function rtuFirstYear(sem, group) {
+  const p = sem + "FY";
+  const math = sem === 1 ? "Engineering Mathematics-I" : "Engineering Mathematics-II";
+  if (group === "physics") return [
+    [p + "2-01 " + math, 4],
+    [p + "2-02 Engineering Physics", 4],
+    [p + "1-04 Communication Skills", 2],
+    [p + "3-06 Programming for Problem Solving", 2],
+    [p + "3-08 Basic Electrical Engineering", 2],
+    [p + "2-20 Engineering Physics Lab", 1],
+    [p + "1-22 Language Lab", 1],
+    [p + "3-24 Computer Programming Lab", 1.5],
+    [p + "3-26 Basic Electrical Engineering Lab", 1],
+    [p + "3-28 Computer Aided Engineering Graphics", 1.5],
+    ["1FY8-00 Social Outreach, Discipline & Extra Curricular Activities", 0.5],
+  ];
+  return [
+    [p + "2-01 " + math, 4],
+    [p + "2-03 Engineering Chemistry", 4],
+    [p + "1-05 Human Values", 2],
+    [p + "3-07 Basic Mechanical Engineering", 2],
+    [p + "3-09 Basic Civil Engineering", 2],
+    [p + "2-21 Engineering Chemistry Lab", 1],
+    [p + "1-23 Human Values Activities", 1],
+    [p + "3-25 Manufacturing Practices Workshop", 1.5],
+    [p + "3-27 Basic Civil Engineering Lab", 1],
+    [p + "3-29 Computer Aided Machine Drawing", 1.5],
+    ["1FY8-00 Social Outreach, Discipline & Extra Curricular Activities", 0.5],
+  ];
+}
+
 const UNIVERSITIES = [
   {
     id: "aktu",
@@ -28,6 +63,7 @@ const UNIVERSITIES = [
     name: "Dr. A.P.J. Abdul Kalam Technical University",
     region: "Uttar Pradesh",
     pct: { mul: 10, sub: 7.5 }, // Percentage = (CGPA − 0.75) × 10
+    syllabusNote: "AKTU subjects are approximate and not yet verified against the official AKTU scheme.",
     scale: [
       { g: "A+", marks: "90–100", p: 10 },
       { g: "A",  marks: "80–89",  p: 9 },
@@ -93,6 +129,7 @@ const UNIVERSITIES = [
     name: "Rajasthan Technical University",
     region: "Rajasthan",
     pct: { mul: 10, sub: 0 }, // Percentage = CGPA × 10
+    syllabusNote: "RTU scheme for students admitted 2018-19 onwards (CSE semesters 3–8 and the common 1st year), taken from the RTU scheme PDF published by SKIT Jaipur, an RTU-affiliated college.",
     scale: [
       { g: "A++", marks: "90–100", p: 10 },
       { g: "A+",  marks: "80–89",  p: 9 },
@@ -108,63 +145,84 @@ const UNIVERSITIES = [
       { g: "F",   marks: "< 35",   p: 0 },
     ],
     syllabus: {
+      // 1st year: students are split into two groups that swap subjects in sem 2.
       common: {
-        1: [
-          ["Engineering Mathematics-I", 4],
-          ["Engineering Physics", 4],
-          ["Communication Skills", 2],
-          ["Programming for Problem Solving", 2],
-          ["Basic Civil Engineering", 2],
-          ["Engineering Physics Lab", 1],
-          ["Language Lab", 1],
-          ["Computer Programming Lab", 1.5],
-          ["Manufacturing Practices Workshop", 1.5],
-          ["Computer Aided Engineering Graphics", 1.5],
-          ["DECA (Extra Curricular Activities)", 0.5],
-        ],
-        2: [
-          ["Engineering Mathematics-II", 4],
-          ["Engineering Chemistry", 4],
-          ["Human Values", 2],
-          ["Basic Electrical Engineering", 2],
-          ["Basic Mechanical Engineering", 2],
-          ["Engineering Chemistry Lab", 1],
-          ["Human Values Activities", 1],
-          ["Basic Electrical Engineering Lab", 1],
-          ["Basic Civil Engineering Lab", 1],
-          ["Computer Aided Machine Drawing", 1.5],
-          ["DECA (Extra Curricular Activities)", 0.5],
-        ],
+        1: { "Physics group": rtuFirstYear(1, "physics"), "Chemistry group": rtuFirstYear(1, "chemistry") },
+        2: { "Chemistry group": rtuFirstYear(2, "chemistry"), "Physics group": rtuFirstYear(2, "physics") },
       },
       CSE: {
         3: [
-          ["Advanced Engineering Mathematics", 3],
-          ["Technical Communication", 2],
-          ["Managerial Economics & Financial Accounting", 2],
-          ["Digital Electronics", 3],
-          ["Data Structures and Algorithms", 3],
-          ["Object Oriented Programming", 3],
-          ["Software Engineering", 3],
-          ["Data Structures and Algorithms Lab", 1.5],
-          ["Object Oriented Programming Lab", 1.5],
-          ["Software Engineering Lab", 1.5],
-          ["Digital Electronics Lab", 1.5],
-          ["Industrial Training", 1],
-          ["SODECA", 0.5],
+          ["3CS2-01 Advanced Engineering Mathematics", 3],
+          ["3CS1-02/03 Technical Communication / Managerial Economics & Financial Accounting", 2],
+          ["3CS3-04 Digital Electronics", 3],
+          ["3CS4-05 Data Structures and Algorithms", 3],
+          ["3CS4-06 Object Oriented Programming", 3],
+          ["3CS4-07 Software Engineering", 3],
+          ["3CS4-21 Data Structures and Algorithms Lab", 1.5],
+          ["3CS4-22 Object Oriented Programming Lab", 1.5],
+          ["3CS4-23 Software Engineering Lab", 1.5],
+          ["3CS4-24 Digital Electronics Lab", 1.5],
+          ["3CS7-30 Industrial Training", 1],
+          ["3CS8-00 Social Outreach, Discipline & Extra Curricular Activities", 0.5],
         ],
         4: [
-          ["Discrete Mathematics Structure", 3],
-          ["Managerial Economics & Financial Accounting / Technical Communication", 2],
-          ["Microprocessor & Interfaces", 3],
-          ["Database Management System", 3],
-          ["Theory of Computation", 3],
-          ["Data Communication and Computer Networks", 3],
-          ["Microprocessor & Interfaces Lab", 1],
-          ["Database Management System Lab", 1.5],
-          ["Network Programming Lab", 1.5],
-          ["Linux Shell Programming Lab", 1],
-          ["Java Lab", 1],
-          ["SODECA", 0.5],
+          ["4CS2-01 Discrete Mathematics Structure", 3],
+          ["4CS1-03/02 Managerial Economics & Financial Accounting / Technical Communication", 2],
+          ["4CS3-04 Microprocessor & Interfaces", 3],
+          ["4CS4-05 Database Management System", 3],
+          ["4CS4-06 Theory of Computation", 3],
+          ["4CS4-07 Data Communication and Computer Networks", 3],
+          ["4CS4-21 Microprocessor & Interfaces Lab", 1],
+          ["4CS4-22 Database Management System Lab", 1.5],
+          ["4CS4-23 Network Programming Lab", 1.5],
+          ["4CS4-24 Linux Shell Programming Lab", 1],
+          ["4CS4-25 Java Lab", 1],
+          ["4CS8-00 Social Outreach, Discipline & Extra Curricular Activities", 0.5],
+        ],
+        5: [
+          ["5CS3-01 Information Theory & Coding", 2],
+          ["5CS4-02 Compiler Design", 3],
+          ["5CS4-03 Operating System", 3],
+          ["5CS4-04 Computer Graphics & Multimedia", 3],
+          ["5CS4-05 Analysis of Algorithms", 3],
+          ["5CS5-1x Professional Elective 1 (Wireless Communication / Human-Computer Interaction / Bioinformatics)", 2],
+          ["5CS4-21 Computer Graphics & Multimedia Lab", 1],
+          ["5CS4-22 Compiler Design Lab", 1],
+          ["5CS4-23 Analysis of Algorithms Lab", 1],
+          ["5CS4-24 Advance Java Lab", 1],
+          ["5CS7-30 Industrial Training", 2.5],
+          ["5CS8-00 Social Outreach, Discipline & Extra Curricular Activities", 0.5],
+        ],
+        6: [
+          ["6CS3-01 Digital Image Processing", 2],
+          ["6CS4-02 Machine Learning", 3],
+          ["6CS4-03 Information Security System", 2],
+          ["6CS4-04 Computer Architecture and Organization", 3],
+          ["6CS4-05 Artificial Intelligence", 2],
+          ["6CS4-06 Cloud Computing", 3],
+          ["6CS5-1x Professional Elective (Distributed System / Software Defined Network / Ecommerce and ERP)", 2],
+          ["6CS4-21 Digital Image Processing Lab", 1.5],
+          ["6CS4-22 Machine Learning Lab", 1.5],
+          ["6CS4-23 Python Lab", 1.5],
+          ["6CS4-24 Mobile Application Development Lab", 1.5],
+          ["6CS8-00 Social Outreach, Discipline & Extra Curricular Activities", 0.5],
+        ],
+        7: [
+          ["7CS4-01 Internet of Things", 3],
+          ["Open Elective - I", 3],
+          ["7CS4-21 Internet of Things Lab", 2],
+          ["7CS4-22 Cyber Security Lab", 2],
+          ["7CS7-30 Industrial Training", 2.5],
+          ["7CS7-40 Seminar", 2],
+          ["7CS8-00 Social Outreach, Discipline & Extra Curricular Activities", 0.5],
+        ],
+        8: [
+          ["8CS4-01 Big Data Analytics", 3],
+          ["Open Elective - II", 3],
+          ["8CS4-21 Big Data Analytics Lab", 1],
+          ["8CS4-22 Software Testing and Validation Lab", 1],
+          ["8CS7 Project", 7],
+          ["8CS8-00 Social Outreach, Discipline & Extra Curricular Activities", 0.5],
         ],
       },
     },
@@ -247,10 +305,23 @@ function getUniversity(id) {
   return UNIVERSITIES.find(u => u.id === id) || null;
 }
 
-// Subjects for a given university / branch / semester number, or null.
-function getSyllabus(uniId, branch, semNo) {
+// Raw syllabus entry for a semester: an array, a { group: array } object, or null.
+function getSyllabusEntry(uniId, branch, semNo) {
   const u = getUniversity(uniId);
   if (!u) return null;
   const s = u.syllabus || {};
   return (s[branch] && s[branch][semNo]) || (s.common && s.common[semNo]) || null;
+}
+
+// Group names for a semester (empty if it has no groups).
+function getSyllabusGroups(uniId, branch, semNo) {
+  const e = getSyllabusEntry(uniId, branch, semNo);
+  return e && !Array.isArray(e) ? Object.keys(e) : [];
+}
+
+// Subjects for a semester ([[name, credits], ...]) or null. Picks the given group, else the first.
+function getSyllabus(uniId, branch, semNo, group) {
+  const e = getSyllabusEntry(uniId, branch, semNo);
+  if (!e || Array.isArray(e)) return e;
+  return e[group] || e[Object.keys(e)[0]];
 }

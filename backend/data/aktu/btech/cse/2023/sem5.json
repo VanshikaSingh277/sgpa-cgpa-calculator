@@ -1,0 +1,74 @@
+{
+  "university": "aktu",
+  "course": "btech",
+  "branch": "cse",
+  "scheme": "2023",
+  "semester": 5,
+  "verified": true,
+  "source": "aktu_btech_cse_3rd_year_2024-25.pdf (https://fms.aktu.ac.in/Resources/aktu/pdf/syllabus/Syllabus2425/B.Tech. CST_CS_CE and CSE Syllabus 3rd Year 2024-25_15072026.pdf)",
+  "sourceSession": "2024-25",
+  "lastUpdated": "2026-11-18",
+  "note": "Where AKTU lets students take one of two subjects (e.g. Physics / Chemistry group) both are listed in one row — they carry the same credits.",
+  "subjects": [
+    {
+      "code": "BCS501",
+      "name": "Database Management System",
+      "type": "theory",
+      "credits": 4
+    },
+    {
+      "code": "BCS502",
+      "name": "Web Technology",
+      "type": "theory",
+      "credits": 4
+    },
+    {
+      "code": "BCS503",
+      "name": "Design and Analysis of Algorithm",
+      "type": "theory",
+      "credits": 4
+    },
+    {
+      "code": "BCS-051…054",
+      "name": "Departmental Elective-I (Statistical Computing / Data Analytics / Computer Graphics / Object Oriented System Design with C++)",
+      "type": "theory",
+      "credits": 3
+    },
+    {
+      "code": "BCS-055…058",
+      "name": "Departmental Elective-II (Machine Learning Techniques / Application of Soft Computing / Image Processing / Data Warehousing & Data Mining)",
+      "type": "theory",
+      "credits": 3
+    },
+    {
+      "code": "BCS551",
+      "name": "Database Management System Lab",
+      "type": "lab",
+      "credits": 1
+    },
+    {
+      "code": "BCS552",
+      "name": "Web Technology Lab",
+      "type": "lab",
+      "credits": 1
+    },
+    {
+      "code": "BCS553",
+      "name": "Design and Analysis of Algorithm Lab",
+      "type": "lab",
+      "credits": 1
+    },
+    {
+      "code": "BCS554",
+      "name": "Mini Project or Internship Assessment",
+      "type": "project",
+      "credits": 2
+    },
+    {
+      "code": "BNC501 / BNC502",
+      "name": "Constitution of India / Essence of Indian Traditional Knowledge",
+      "type": "audit",
+      "credits": 0
+    }
+  ]
+}

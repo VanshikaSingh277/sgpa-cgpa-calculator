@@ -1,0 +1,20 @@
+[
+  {
+    "id": "aktu",
+    "name": "Dr. A.P.J. Abdul Kalam Technical University",
+    "shortName": "AKTU",
+    "state": "Uttar Pradesh"
+  },
+  {
+    "id": "rtu",
+    "name": "Rajasthan Technical University, Kota",
+    "shortName": "RTU",
+    "state": "Rajasthan"
+  },
+  {
+    "id": "autonomous",
+    "name": "Autonomous college / Other university",
+    "shortName": "Autonomous",
+    "customSubjects": true
+  }
+]

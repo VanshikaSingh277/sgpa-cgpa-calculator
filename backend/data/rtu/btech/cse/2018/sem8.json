@@ -1,0 +1,50 @@
+{
+  "university": "rtu",
+  "course": "btech",
+  "branch": "cse",
+  "scheme": "2018",
+  "semester": 8,
+  "verified": false,
+  "source": "rtu_btech_cse_scheme_2018-onwards_skit.pdf (https://www.skit.ac.in/images/cs-files/BTech_CS_2018_onwards.pdf)",
+  "sourceSession": "2018-19 onwards",
+  "lastUpdated": "2026-11-18",
+  "note": "Taken from RTU's scheme as published by SKIT Jaipur (an RTU-affiliated college), not from rtu.ac.in, and it is the scheme for students admitted from 2018-19. Check it against your current RTU scheme.",
+  "subjects": [
+    {
+      "code": "8CS4-01",
+      "name": "Big Data Analytics",
+      "type": "theory",
+      "credits": 3
+    },
+    {
+      "code": "OE-II",
+      "name": "Open Elective - II",
+      "type": "theory",
+      "credits": 3
+    },
+    {
+      "code": "8CS4-21",
+      "name": "Big Data Analytics Lab",
+      "type": "lab",
+      "credits": 1
+    },
+    {
+      "code": "8CS4-22",
+      "name": "Software Testing and Validation Lab",
+      "type": "lab",
+      "credits": 1
+    },
+    {
+      "code": "8CS7",
+      "name": "Project",
+      "type": "project",
+      "credits": 7
+    },
+    {
+      "code": "8CS8-00",
+      "name": "Social Outreach, Discipline & Extra Curricular Activities (SODECA)",
+      "type": "lab",
+      "credits": 0.5
+    }
+  ]
+}
