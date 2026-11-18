@@ -3,59 +3,93 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AKTU SGPA & CGPA Calculator</title>
-<meta name="description" content="Free AKTU SGPA, CGPA and percentage calculator for students.">
+<title>SGPA & CGPA Calculator</title>
+<meta name="description" content="Free SGPA, CGPA and percentage calculator for AKTU, RTU, RGPV, VTU, GTU and autonomous college students.">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <header>
-  <h1>🎓 AKTU SGPA & CGPA Calculator</h1>
-  <p>Add your subjects, pick grades, and get SGPA, CGPA and percentage instantly.</p>
+  <h1>🎓 SGPA & CGPA Calculator</h1>
+  <p id="tagline">Pick your university to load your subjects and grading scale.</p>
 </header>
 
 <main>
-  <div class="tabs">
-    <button class="tab active" data-mode="detailed">Subject-wise</button>
-    <button class="tab" data-mode="quick">Quick CGPA (from SGPAs)</button>
-  </div>
+  <!-- Step 1 & 2: choose university, then branch -->
+  <section id="setup">
+    <div id="stepUni">
+      <h2 class="step-title">1. Select your university</h2>
+      <div id="uniGrid" class="uni-grid"></div>
+    </div>
 
-  <!-- Detailed mode -->
-  <section id="detailed">
-    <div id="semesters"></div>
-    <div class="row-btns">
-      <button id="addSem" class="btn">+ Add Semester</button>
-      <button id="reset" class="btn ghost">Reset all</button>
+    <div id="stepBranch" hidden>
+      <h2 class="step-title">2. Select your branch</h2>
+      <p class="hint" id="branchHint"></p>
+      <div id="branchGrid" class="chip-grid"></div>
+      <div class="row-btns">
+        <button id="backToUni" class="btn ghost">← Change university</button>
+      </div>
     </div>
   </section>
 
-  <!-- Quick mode -->
-  <section id="quick" hidden>
-    <p class="hint">Enter each semester's SGPA and total credits.</p>
-    <table class="quick-table">
-      <thead><tr><th>Sem</th><th>SGPA</th><th>Credits</th><th></th></tr></thead>
-      <tbody id="quickRows"></tbody>
-    </table>
-    <button id="addQuick" class="btn">+ Add Semester</button>
-  </section>
+  <!-- Calculator -->
+  <section id="calculator" hidden>
+    <div class="uni-bar">
+      <div>
+        <strong id="uniName"></strong>
+        <span id="uniMeta" class="hint"></span>
+      </div>
+      <button id="changeUni" class="btn small ghost">Change</button>
+    </div>
 
-  <section class="result">
-    <div class="stat"><span>CGPA</span><strong id="cgpa">0.00</strong></div>
-    <div class="stat"><span>Percentage</span><strong id="percent">0.00%</strong></div>
-    <div class="stat"><span>Total Credits</span><strong id="credits">0</strong></div>
-  </section>
-  <p class="formula">Percentage = (CGPA × 10) − 7.5 (AKTU formula)</p>
+    <div class="tabs">
+      <button class="tab active" data-mode="detailed">Subject-wise</button>
+      <button class="tab" data-mode="quick">Quick CGPA (from SGPAs)</button>
+    </div>
 
-  <details class="scale">
-    <summary>Grade scale (tap to view / edit)</summary>
-    <table>
-      <thead><tr><th>Grade</th><th>Marks</th><th>Points</th></tr></thead>
-      <tbody id="scaleRows"></tbody>
-    </table>
-    <p class="hint">Check this against your latest AKTU ordinance and edit the points if needed.</p>
-  </details>
+    <!-- Detailed mode -->
+    <section id="detailed">
+      <div id="semesters"></div>
+      <div class="row-btns">
+        <button id="addSem" class="btn">+ Add Semester</button>
+        <button id="reset" class="btn ghost">Reset all</button>
+      </div>
+    </section>
+
+    <!-- Quick mode -->
+    <section id="quick" hidden>
+      <p class="hint">Enter each semester's SGPA and total credits.</p>
+      <table class="quick-table">
+        <thead><tr><th>Sem</th><th>SGPA</th><th>Credits</th><th></th></tr></thead>
+        <tbody id="quickRows"></tbody>
+      </table>
+      <button id="addQuick" class="btn">+ Add Semester</button>
+    </section>
+
+    <section class="result">
+      <div class="stat"><span>CGPA</span><strong id="cgpa">0.00</strong></div>
+      <div class="stat"><span>Percentage</span><strong id="percent">0.00%</strong></div>
+      <div class="stat"><span>Total Credits</span><strong id="credits">0</strong></div>
+    </section>
+    <p class="formula" id="formula"></p>
+
+    <details class="scale">
+      <summary>Grade scale &amp; percentage formula (tap to view / edit)</summary>
+      <table>
+        <thead><tr><th>Grade</th><th>Marks</th><th>Points</th></tr></thead>
+        <tbody id="scaleRows"></tbody>
+      </table>
+      <p class="pct-edit">
+        Percentage = CGPA ×
+        <input type="number" step="0.1" id="pctMul"> −
+        <input type="number" step="0.1" id="pctSub">
+      </p>
+      <p class="hint">Check this against your university's latest ordinance and edit if needed.</p>
+    </details>
+  </section>
 </main>
 
-<footer>Made by Vanshika · Results are estimates, always confirm with the official AKTU result.</footer>
+<footer>Made by Vanshika · Results are estimates, always confirm with your official university result.</footer>
+<script src="data.js"></script>
 <script src="script.js"></script>
 </body>
 </html>
