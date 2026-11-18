@@ -1,25 +1,32 @@
 // Depends on data.js (UNIVERSITIES, BRANCHES, getUniversity, getSyllabus)
 
-const KEY = "sgpa-calc-v2";
+const KEY = "sgpa-calc-v3";
+const SEM_COUNT = 8;
 let state = load() || freshState();
 
+// sems: { "1": { fromSyllabus, subjects: [...] }, "3": {...} } — only semesters the student opened
 function freshState() {
-  return { uni: null, branch: null, mode: "detailed", scale: [], pct: { mul: 10, sub: 0 }, sems: [], quick: [{ sgpa: "", credits: "" }] };
+  return { uni: null, branch: null, sem: 1, mode: "detailed", scale: [], pct: { mul: 10, sub: 0 }, sems: {}, quick: [{ sgpa: "", credits: "" }] };
 }
 function load() { try { return JSON.parse(localStorage.getItem(KEY)); } catch { return null; } }
 function save() { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch {} }
 
 const $ = id => document.getElementById(id);
 const esc = v => String(v).replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;");
-const points = g => (state.scale.find(s => s.g === g) || { p: 0 }).p;
-const topGrade = () => (state.scale[0] || { g: "" }).g;
-const blankSubject = () => ({ name: "", credits: "", grade: topGrade() });
+const gradeOf = g => state.scale.find(s => s.g === g);
+const blankSubject = () => ({ name: "", credits: "", grade: "" });
+const syllabusFor = no => getSyllabus(state.uni, state.branch, no);
 
-// Build a semester: from the syllabus if we have it, otherwise blank rows.
+// Build a semester from the syllabus if we have it, otherwise blank rows.
+// Grades start empty, so a subject only counts once the student picks a grade.
 function newSem(no) {
-  const syl = getSyllabus(state.uni, state.branch, no);
-  if (syl) return { fromSyllabus: true, subjects: syl.map(([name, credits]) => ({ name, credits, grade: topGrade() })) };
+  const syl = syllabusFor(no);
+  if (syl) return { fromSyllabus: true, subjects: syl.map(([name, credits]) => ({ name, credits, grade: "" })) };
   return { fromSyllabus: false, subjects: [blankSubject(), blankSubject(), blankSubject()] };
+}
+function currentSem() {
+  if (!state.sems[state.sem]) state.sems[state.sem] = newSem(state.sem);
+  return state.sems[state.sem];
 }
 
 // ---------- Setup screens ----------
@@ -37,11 +44,25 @@ function renderBranchGrid(uniId) {
   const withData = Object.keys(u.syllabus || {}).filter(k => k !== "common");
   const hasCommon = !!(u.syllabus && u.syllabus.common);
   $("branchHint").textContent = hasCommon || withData.length
-    ? `${u.short}: subjects are pre-filled where available${withData.length ? ` (full data for ${withData.join(", ")}, 1st year for all branches)` : ""}. You can edit or add anything.`
+    ? `${u.short}: subjects are pre-filled where available${withData.length ? ` (1st year for all branches, more semesters for ${withData.join(", ")})` : ""}. You can edit or add anything.`
     : `${u.short}: no syllabus data yet — you'll enter subjects and credits yourself. The grade scale is pre-set.`;
   $("branchGrid").innerHTML = Object.entries(BRANCHES).map(([k, label]) =>
-    `<button class="chip" data-branch="${k}" data-for="${uniId}">${esc(label)}</button>`).join("")
-    + `<button class="chip" data-branch="OTHER" data-for="${uniId}">Other</button>`;
+    `<button class="chip ${pending.branch === k && pending.uni === uniId ? "selected" : ""}" data-branch="${k}">${esc(label)}</button>`).join("")
+    + `<button class="chip" data-branch="OTHER">Other</button>`;
+}
+
+function renderSemGrid() {
+  const u = getUniversity(pending.uni);
+  $("semHint").textContent = `${u.short}${pending.branch !== "OTHER" ? " · " + pending.branch : ""} — 📘 means subjects are pre-filled from the syllabus.`;
+  let html = "";
+  for (let n = 1; n <= SEM_COUNT; n++) {
+    const has = !!getSyllabus(pending.uni, pending.branch, n);
+    html += `<button class="sem-card" data-pick="${n}">
+      <strong>Semester ${n}</strong>
+      <small>${has ? "📘 Syllabus available" : "✏️ Enter subjects"}</small>
+    </button>`;
+  }
+  $("semGrid").innerHTML = html;
 }
 
 function showSetup(step) {
@@ -49,25 +70,31 @@ function showSetup(step) {
   $("calculator").hidden = true;
   $("stepUni").hidden = step !== "uni";
   $("stepBranch").hidden = step !== "branch";
-  $("tagline").textContent = "Pick your university to load your subjects and grading scale.";
+  $("stepSem").hidden = step !== "sem";
+  $("tagline").textContent = "Pick your university, branch and semester to load your subjects.";
 }
 
-function chooseUniversity(uniId, branch) {
-  const u = getUniversity(uniId);
-  const changed = state.uni !== uniId || state.branch !== branch;
+// Choices made during setup, applied once a semester is picked.
+let pending = { uni: null, branch: null };
+
+function finishSetup(semNo) {
+  const u = getUniversity(pending.uni);
+  const changed = state.uni !== pending.uni || state.branch !== pending.branch;
   if (changed) {
-    const hasData = state.sems.some(sem => sem.subjects.some(s => s.credits)) || state.quick.some(q => q.sgpa);
-    if (state.uni && hasData && !confirm("Switching university will clear your current semesters. Continue?")) {
+    const hasData = Object.values(state.sems).some(sem => sem.subjects.some(s => s.grade)) || state.quick.some(q => q.sgpa);
+    if (state.uni && hasData && !confirm("Switching university or branch will clear your current grades. Continue?")) {
       showCalculator();
       return;
     }
-    state.uni = uniId;
-    state.branch = branch;
+    state.uni = pending.uni;
+    state.branch = pending.branch;
     state.scale = u.scale.map(s => ({ ...s }));
     state.pct = { ...u.pct };
-    state.sems = [newSem(1)];
+    state.sems = {};
     state.quick = [{ sgpa: "", credits: "" }];
   }
+  state.sem = semNo;
+  state.mode = "detailed";
   save();
   showCalculator();
 }
@@ -78,7 +105,7 @@ function showCalculator() {
   $("calculator").hidden = false;
   $("uniName").textContent = u.short;
   $("uniMeta").textContent = ` · ${u.name}${state.branch && state.branch !== "OTHER" ? " · " + state.branch : ""}`;
-  $("tagline").textContent = "Pick grades for each subject to get SGPA, CGPA and percentage instantly.";
+  $("tagline").textContent = "Pick a grade for each subject to get your SGPA, CGPA and percentage.";
   renderScale(); renderSems(); renderQuick(); setMode(state.mode);
 }
 
@@ -86,8 +113,8 @@ function showCalculator() {
 function semTotals(sem) {
   let c = 0, gp = 0;
   sem.subjects.forEach(s => {
-    const cr = parseFloat(s.credits);
-    if (cr > 0) { c += cr; gp += cr * points(s.grade); }
+    const cr = parseFloat(s.credits), g = gradeOf(s.grade);
+    if (cr > 0 && g) { c += cr; gp += cr * g.p; }
   });
   return { c, gp, sgpa: c ? gp / c : 0 };
 }
@@ -98,64 +125,79 @@ function showResult(cgpa, credits) {
   $("cgpa").textContent = cgpa.toFixed(2);
   $("percent").textContent = pct.toFixed(2) + "%";
   $("credits").textContent = credits;
-  $("formula").textContent = `Percentage = CGPA × ${mul}${sub ? ` − ${sub}` : ""} (${getUniversity(state.uni).short})`;
+  $("formula").textContent = `Percentage = CGPA × ${mul}${sub ? ` − ${sub}` : ""} (${getUniversity(state.uni).short}) · CGPA uses every semester with grades entered`;
 }
 
 function recalc() {
   let C = 0, GP = 0;
   if (state.mode === "detailed") {
-    state.sems.forEach((sem, i) => {
+    for (const [no, sem] of Object.entries(state.sems)) {
       const t = semTotals(sem);
       C += t.c; GP += t.gp;
-      const el = document.querySelector(`[data-sgpa="${i}"]`);
-      if (el) el.textContent = "SGPA: " + t.sgpa.toFixed(2);
-      const cr = document.querySelector(`[data-semcr="${i}"]`);
-      if (cr) cr.textContent = t.c + " credits";
-    });
+      const tab = document.querySelector(`[data-tabsgpa="${no}"]`);
+      if (tab) tab.textContent = t.c ? t.sgpa.toFixed(2) : "";
+    }
+    const t = semTotals(currentSem());
+    $("sgpa").textContent = t.sgpa.toFixed(2);
+    $("sgpaLabel").textContent = `Semester ${state.sem} SGPA`;
+    const cr = document.querySelector("[data-semcr]");
+    if (cr) cr.textContent = `${t.c} graded credits`;
   } else {
     state.quick.forEach(q => {
       const s = parseFloat(q.sgpa), c = parseFloat(q.credits);
       if (s >= 0 && c > 0) { C += c; GP += s * c; }
     });
   }
+  $("sgpaStat").hidden = state.mode !== "detailed";
   showResult(C ? GP / C : 0, C);
   save();
 }
 
 // ---------- Rendering ----------
 function gradeOptions(sel) {
-  return state.scale.map(s => `<option value="${esc(s.g)}" ${s.g === sel ? "selected" : ""}>${esc(s.g)} (${s.p})</option>`).join("");
+  return `<option value="" ${sel ? "" : "selected"}>— Grade —</option>`
+    + state.scale.map(s => `<option value="${esc(s.g)}" ${s.g === sel ? "selected" : ""}>${esc(s.g)} (${s.p})</option>`).join("");
+}
+
+function renderSemTabs() {
+  let html = "";
+  for (let n = 1; n <= SEM_COUNT; n++) {
+    html += `<button class="sem-tab ${n === state.sem ? "active" : ""}" data-sem="${n}">
+      Sem ${n}<small data-tabsgpa="${n}"></small></button>`;
+  }
+  $("semTabs").innerHTML = html;
 }
 
 function renderSems() {
-  const last = state.sems.length - 1;
-  $("semesters").innerHTML = state.sems.map((sem, i) => {
-    const hasSyl = !!getSyllabus(state.uni, state.branch, i + 1);
-    return `
+  const sem = currentSem();
+  const n = state.sem;
+  const hasSyl = !!syllabusFor(n);
+  renderSemTabs();
+  $("semesters").innerHTML = `
     <div class="sem">
       <div class="sem-head">
         <div>
-          <h3>Semester ${i + 1}</h3>
-          <small class="hint">${sem.fromSyllabus ? "📘 Subjects loaded from syllabus" : "✏️ Enter your subjects"} · <span data-semcr="${i}"></span></small>
+          <h3>Semester ${n}</h3>
+          <small class="hint">${sem.fromSyllabus ? "📘 Subjects loaded from syllabus" : "✏️ No syllabus data — enter your subjects"} · <span data-semcr></span></small>
         </div>
-        <span class="sgpa" data-sgpa="${i}">SGPA: 0.00</span>
+        <span class="sgpa" data-sgpa>SGPA: <span id="cardSgpa"></span></span>
       </div>
       <div class="subj subj-head"><span>Subject</span><span>Credits</span><span>Grade</span><span></span></div>
       ${sem.subjects.map((s, j) => `
         <div class="subj">
-          <input placeholder="Subject" value="${esc(s.name)}" data-i="${i}" data-j="${j}" data-f="name">
-          <input type="number" min="0" step="0.5" placeholder="Credits" value="${esc(s.credits)}" data-i="${i}" data-j="${j}" data-f="credits">
-          <select data-i="${i}" data-j="${j}" data-f="grade">${gradeOptions(s.grade)}</select>
-          <button class="icon" title="Remove" data-del="${i}-${j}">✕</button>
+          <input placeholder="Subject" value="${esc(s.name)}" data-j="${j}" data-f="name">
+          <input type="number" min="0" step="0.5" placeholder="Credits" value="${esc(s.credits)}" data-j="${j}" data-f="credits">
+          <select data-j="${j}" data-f="grade">${gradeOptions(s.grade)}</select>
+          <button class="icon" title="Remove" data-del="${j}">✕</button>
         </div>`).join("")}
       <div class="row-btns">
-        <button class="btn small" data-addsub="${i}">+ Subject</button>
-        ${hasSyl && !sem.fromSyllabus ? `<button class="btn small ghost" data-loadsyl="${i}">Load syllabus</button>` : ""}
-        ${i === last && state.sems.length > 1 ? `<button class="btn small ghost" data-delsem="${i}">Remove semester</button>` : ""}
+        <button class="btn small" data-addsub>+ Subject</button>
+        ${hasSyl ? `<button class="btn small ghost" data-loadsyl>Reload syllabus</button>` : ""}
+        <button class="btn small ghost" data-clearsem>Clear grades</button>
       </div>
     </div>`;
-  }).join("");
   recalc();
+  $("cardSgpa").textContent = semTotals(sem).sgpa.toFixed(2);
 }
 
 function renderQuick() {
@@ -188,9 +230,10 @@ function setMode(m) {
 // ---------- Events ----------
 document.addEventListener("input", e => {
   const d = e.target.dataset;
-  if (d.i !== undefined) {
-    state.sems[d.i].subjects[d.j][d.f] = e.target.value;
+  if (d.j !== undefined) {
+    currentSem().subjects[d.j][d.f] = e.target.value;
     recalc();
+    $("cardSgpa").textContent = semTotals(currentSem()).sgpa.toFixed(2);
   } else if (d.q !== undefined) { state.quick[d.q][d.f] = e.target.value; recalc(); }
   else if (d.scale !== undefined) {
     state.scale[d.scale].p = parseFloat(e.target.value) || 0;
@@ -205,27 +248,29 @@ document.addEventListener("click", e => {
   const btn = e.target.closest("button");
   if (!btn) return;
   const d = btn.dataset;
-  if (d.uni) { renderBranchGrid(d.uni); showSetup("branch"); }
-  else if (d.branch) chooseUniversity(d.for, d.branch);
+  if (d.uni) { pending = { uni: d.uni, branch: null }; renderBranchGrid(d.uni); showSetup("branch"); }
+  else if (d.branch) { pending.branch = d.branch; renderSemGrid(); showSetup("sem"); }
+  else if (d.pick) finishSetup(+d.pick);
+  else if (d.sem) { state.sem = +d.sem; renderSems(); }
   else if (d.mode) setMode(d.mode);
-  else if (d.addsub !== undefined) { state.sems[d.addsub].subjects.push(blankSubject()); renderSems(); }
+  else if (d.addsub !== undefined) { currentSem().subjects.push(blankSubject()); renderSems(); }
   else if (d.loadsyl !== undefined) {
-    const i = +d.loadsyl;
-    const hasInput = state.sems[i].subjects.some(s => s.name || s.credits);
-    if (!hasInput || confirm(`Replace Semester ${i + 1} subjects with the syllabus?`)) { state.sems[i] = newSem(i + 1); renderSems(); }
+    if (confirm(`Replace Semester ${state.sem} subjects with the syllabus? Grades in this semester will be cleared.`)) {
+      state.sems[state.sem] = newSem(state.sem); renderSems();
+    }
   }
-  else if (d.del) { const [i, j] = d.del.split("-"); state.sems[i].subjects.splice(j, 1); renderSems(); }
-  else if (d.delsem !== undefined) { state.sems.splice(d.delsem, 1); renderSems(); }
+  else if (d.clearsem !== undefined) { currentSem().subjects.forEach(s => s.grade = ""); renderSems(); }
+  else if (d.del !== undefined) { currentSem().subjects.splice(+d.del, 1); renderSems(); }
   else if (d.delq !== undefined) { state.quick.splice(d.delq, 1); renderQuick(); }
 });
 
-$("addSem").onclick = () => { state.sems.push(newSem(state.sems.length + 1)); renderSems(); };
 $("addQuick").onclick = () => { state.quick.push({ sgpa: "", credits: "" }); renderQuick(); };
 $("reset").onclick = () => {
-  if (confirm("Clear all semesters?")) { state.sems = [newSem(1)]; state.quick = [{ sgpa: "", credits: "" }]; renderSems(); renderQuick(); }
+  if (confirm("Clear all semesters?")) { state.sems = {}; state.quick = [{ sgpa: "", credits: "" }]; renderSems(); renderQuick(); }
 };
-$("changeUni").onclick = () => { renderUniGrid(); showSetup("uni"); };
-$("backToUni").onclick = () => showSetup("uni");
+$("changeUni").onclick = () => { pending = { uni: state.uni, branch: state.branch }; renderUniGrid(); showSetup("uni"); };
+$("backToUni").onclick = () => { renderUniGrid(); showSetup("uni"); };
+$("backToBranch").onclick = () => { renderBranchGrid(pending.uni); showSetup("branch"); };
 
 // ---------- Start ----------
 renderUniGrid();

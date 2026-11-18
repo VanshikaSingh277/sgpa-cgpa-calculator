@@ -29,6 +29,15 @@
         <button id="backToUni" class="btn ghost">← Change university</button>
       </div>
     </div>
+
+    <div id="stepSem" hidden>
+      <h2 class="step-title">3. Select your semester</h2>
+      <p class="hint" id="semHint"></p>
+      <div id="semGrid" class="sem-grid"></div>
+      <div class="row-btns">
+        <button id="backToBranch" class="btn ghost">← Change branch</button>
+      </div>
+    </div>
   </section>
 
   <!-- Calculator -->
@@ -48,10 +57,10 @@
 
     <!-- Detailed mode -->
     <section id="detailed">
+      <div id="semTabs" class="sem-tabs"></div>
       <div id="semesters"></div>
       <div class="row-btns">
-        <button id="addSem" class="btn">+ Add Semester</button>
-        <button id="reset" class="btn ghost">Reset all</button>
+        <button id="reset" class="btn ghost">Reset all semesters</button>
       </div>
     </section>
 
@@ -66,6 +75,7 @@
     </section>
 
     <section class="result">
+      <div class="stat" id="sgpaStat"><span id="sgpaLabel">SGPA</span><strong id="sgpa">0.00</strong></div>
       <div class="stat"><span>CGPA</span><strong id="cgpa">0.00</strong></div>
       <div class="stat"><span>Percentage</span><strong id="percent">0.00%</strong></div>
       <div class="stat"><span>Total Credits</span><strong id="credits">0</strong></div>
